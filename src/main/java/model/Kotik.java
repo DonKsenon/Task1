@@ -136,9 +136,11 @@ public class Kotik {
     }
 
     private boolean eat() {
+        int energiya =randomEnergii();
+        String food = randomFood();
         if (satiety < 20) {
-            eat(5, "fish");
-            System.out.printf("Kotik poel ");
+            eat(energiya,food);
+            System.out.printf("Kotik poel "+food+" i poluchil "+energiya+" energii");
             return true;
         } else {
             System.out.printf("Kotik ne goloden");
@@ -157,5 +159,14 @@ public class Kotik {
         return true;
     }
 
+    private int randomEnergii()
+    {
+        return (int) (Math.random()*20+1);
+    }
+
+    private String randomFood()
+    {
+        return FoodCat.values()[(int)(Math.random()*FoodCat.values().length)].toString();
+    }
 
 }
